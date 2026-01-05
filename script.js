@@ -27,12 +27,14 @@ async function searchLoction(longitude, latitude) {
     loc.innerText = `You are currently at ${data.location.name}, ${data.location.region}, ${data.location.country}`;
     dateTime.innerText = `Current Date & Time: ${data.location.localtime}`;
     temp.innerText = `Current Temperature: ${data.current.temp_c}°C`;
+    latlong.innerText =`Latitude : ${latitude} & Longitude : ${longitude}`;
 
   } catch (error) {
     console.error(error);
     loc.innerText = "Weather data not accessible on deployed site ❌";
     dateTime.innerText = "";
     temp.innerText = "";
+    latlong.innerText = "";
   }
 }
 function failedToGet(){
