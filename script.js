@@ -1,13 +1,15 @@
-const button = document.getElementById("clickButton");
-const loc = document.getElementById("loc");
-const dateTime = document.getElementById("currentTime");
-const temp = document.getElementById("temp");
-async function gotPosition(position) {
-  console.log(position);
-
-  var longitude = position.coords.longitude;
-  var latitude = position.coords.latitude;
-  searchLoction(longitude, latitude);
+const button = document.getElementById("clickButton")
+const loc = document.getElementById("loc")
+const dateTime = document.getElementById("currentTime")
+const temp = document.getElementById("temp")
+const latlong = document.getElementById("latlong")
+async function gotPosition(position){
+    console.log(position)
+    
+    var longitude = position.coords.longitude
+    var latitude = position.coords.latitude
+    searchLoction(longitude,latitude)
+    
 }
 async function searchLoction(longitude, latitude) {
   try {
@@ -25,17 +27,20 @@ async function searchLoction(longitude, latitude) {
     loc.innerText = `You are currently at ${data.location.name}, ${data.location.region}, ${data.location.country}`;
     dateTime.innerText = `Current Date & Time: ${data.location.localtime}`;
     temp.innerText = `Current Temperature: ${data.current.temp_c}°C`;
+    latlong.innerText =`Latitude : ${latitude} & Longitude : ${longitude}`;
 
   } catch (error) {
     console.error(error);
     loc.innerText = "Weather data not accessible on deployed site ❌";
     dateTime.innerText = "";
     temp.innerText = "";
+    latlong.innerText = "";
   }
 }
-function failedToGet() {
-  console.log("Not able to get location");
+function failedToGet(){
+    console.log("Not able to get location")
 }
-button.addEventListener("click", async () => {
-  navigator.geolocation.getCurrentPosition(gotPosition, failedToGet);
-});
+button.addEventListener("click",async ()=>{
+    navigator.geolocation.getCurrentPosition(gotPosition,failedToGet)
+
+})
