@@ -1,0 +1,1 @@
+{"name":"weather-location-dashboard","private":true,"scripts":{"test":"node --test tests/*.test.cjs","check":"node --check weather.js && node --check script.js"},"engines":{"node":">=20"}}

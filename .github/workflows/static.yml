@@ -2,6 +2,7 @@
 name: Deploy static content to Pages
 
 on:
+  pull_request:
   # Runs on pushes targeting the default branch
   push:
     branches: ["main"]
@@ -22,8 +23,19 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm test
+      - run: npm run check
   # Single deploy job since we're just deploying
   deploy:
+    needs: checks
+    if: github.event_name != 'pull_request'
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
