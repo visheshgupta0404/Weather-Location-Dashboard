@@ -1,100 +1,31 @@
-Weather Location Tracker
+# Weather Location Dashboard
 
-📌 Overview
+Current weather, local time, and coordinates in a responsive browser dashboard.
 
-Weather Location Tracker is a responsive web application that provides real-time weather information along with detailed location data. Users can search by city name to instantly view accurate weather and time-related details for that location.
+- Search a city and choose among matching locations.
+- Use your device location with an explicit permission prompt and a city-search fallback.
+- View temperature, feels-like temperature, humidity, wind, conditions, timezone, and weather timestamp.
+- See useful messages for denied permissions, unavailable locations, timeouts, and service failures.
 
-This project focuses on simplicity, clarity, and practical use of APIs in web development.
+## Run locally
 
-🚀 Features
+Serve this directory with `python -m http.server 8000`, then open http://localhost:8000. Device location requires HTTPS or localhost. No build step, dependency installation, or API key is needed.
 
-🔍 Search weather by city name
+## Checks
 
-📍 Displays City, Region, and Country
+With Node.js 20 or newer:
 
-🕒 Shows Local Date & Time
+```sh
+npm test
+npm run check
+```
 
-🌐 Displays Timezone
+Regression tests use mocked responses; they do not depend on the public service being online. GitHub Actions runs them before deploying to Pages.
 
-🌡️ Shows Temperature in Celsius (°C)
+## Data and privacy
 
-🤗 Displays Feels-like Temperature
+Weather comes from [Open-Meteo](https://open-meteo.com/en/docs), with city matching from its [geocoding API](https://open-meteo.com/en/docs/geocoding-api) based on GeoNames. The free endpoint is for non-commercial use and is subject to service availability and limits. Weather values are model-based current conditions, not a personal weather-station reading.
 
-💧 Shows Humidity
+City searches are sent to the geocoding service. Device coordinates are requested only after selecting **Use my location** and are sent to the weather service. This app does not persist location data. The device-location view shows coordinates rather than claiming an unverified city name.
 
-⚡ Fast and responsive interface
-
-🛠️ Technologies Used
-
-HTML – Page structure
-
-CSS – Styling and layout
-
-JavaScript – Application logic and API integration
-
-Weather API – Real-time weather and location data
-
-📂 Project Structure
-weather-location-tracker/
-├── index.html        # Main HTML file
-├── style.css         # Styling file
-├── script.js         # JavaScript logic and API handling
-└── README.md         # Project documentation
-
-🧠 How It Works
-
-User enters a city name in the search field
-
-JavaScript sends a request to the Weather API
-
-The API returns real-time weather and location data
-
-The application displays:
-
-City, Region, Country
-
-Local date, time, and timezone
-
-Temperature (°C)
-
-Feels-like temperature
-
-Humidity
-
-▶️ How to Run the Project
-
-Clone the repository:
-
-git clone <repository-url>
-
-
-Open the project folder
-
-Open index.html in any modern browser
-
-Enter a city name to view weather details 🌦️
-
-📸 Sample Output
-City: London
-Region: England
-Country: United Kingdom
-Local Time: 2025-12-23 18:45
-Timezone: GMT
-Temperature: 12°C
-Feels Like: 10°C
-Humidity: 78%
-
-🔮 Future Enhancements
-
-🌬️ Wind speed and pressure details
-
-☁️ Weather condition icons
-
-📱 Improved mobile responsiveness
-
-🌙 Dark mode support
-
-👨‍💻 Author
-
-Vishesh Gupta
-B.Tech Student | Web Development Enthusiast
+Built with HTML, CSS, and JavaScript by Vishesh Gupta.

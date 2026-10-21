@@ -1,26 +1,24 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fetch Live Location</title>
-    <script src="script.js" defer></script>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Current weather, local time, and location details. Search a city or use your location.">
+  <title>Weather Location Dashboard</title>
+  <link rel="stylesheet" href="style.css"><script src="weather.js" defer></script><script src="script.js" defer></script>
 </head>
 <body>
-    <div>
-        <h1>Welcome to our get Location in Single Click Website</h1>
-        <h4>This side Vishesh Gupta</h4>
-    </div>
-    
-        <h2>Are you ready to get your location</h2>
-        <button id="clickButton">Get Location</button>
-    
-    <div>
-        <h2 id="loc">Your Live Locattion is</h2>
-        <h2 id ="currentTime">Current Date, Time and Timezone </h2>
-        <h2 id="latlong">Latitude & Longitude</h2>
-        <h2 id="temp">Actual Temperature , feels like and Humidity</h2>
-    </div>
-    
+  <main id="dashboard" aria-busy="false">
+    <header><p class="eyebrow">WEATHER / WHERE YOU ARE</p><h1>A little clarity<br>for your day.</h1><p class="intro">Current conditions, wherever you are headed.</p></header>
+    <form id="search-form"><label for="city">Find a city</label><div class="search"><input id="city" name="city" type="search" placeholder="e.g. Gurugram" autocomplete="address-level2" minlength="2" maxlength="120" required><button id="search-button" type="submit">Search</button></div></form>
+    <button id="clickButton" type="button" class="secondary">Use my location ↗</button>
+    <p id="status" role="status" aria-live="polite">Search a city or choose to share your location.</p>
+    <div id="city-choices" aria-label="Matching cities"></div>
+    <section id="weather-result" aria-label="Current weather" hidden>
+      <p id="condition" class="eyebrow"></p><h2 id="loc"></h2><p id="temp" class="temperature"></p>
+      <dl class="metrics"><div><dt>Feels like</dt><dd id="feels-like"></dd></div><div><dt>Humidity</dt><dd id="humidity"></dd></div><div><dt>Wind</dt><dd id="wind"></dd></div></dl>
+      <dl class="details"><div><dt>Weather time</dt><dd id="currentTime"></dd></div><div><dt>Timezone</dt><dd id="timezone"></dd></div><div><dt>Coordinates</dt><dd id="latlong"></dd></div></dl>
+    </section>
+    <footer>Weather &amp; city search by <a href="https://open-meteo.com/">Open-Meteo</a>. Your coordinates are sent to the weather service only after you choose to share them. No location is stored by this app.</footer>
+  </main>
 </body>
 </html>
